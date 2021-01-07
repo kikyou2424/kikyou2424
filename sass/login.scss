@@ -1,0 +1,220 @@
+$color:#1890ff;
+.forum_header {
+    width: 100%;
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // z-index: 9000;
+    height: 128px;
+    background: #000;
+    .forum_header_content {
+        width: 1210px;
+        margin: 0 auto;
+        height: 67px;
+        box-sizing: border-box;
+        .sony-logo {
+            float: left;
+            margin-left: 25px;
+            a {
+                width: 109px;
+                padding-top: 25px;
+                display: block;
+                color: #fff;
+                img {
+                    display: block;
+                    width: 100px;
+                }
+            }
+        }
+        .header_ss {
+            float: right;
+            .userlogout {
+                display: none;
+                float: right;
+                line-height: 67px;
+                margin-left: 15px;
+                span {
+                    margin-left: 10px;
+                    cursor: pointer;
+                    color: $color;
+                }
+            }
+            .header_ss_c {
+                float: left;
+                ul li {
+                    float: left;
+                    line-height: 65px;
+                    margin-left: 20px;
+                    a {
+                        color: #fff;
+                        font-size: 14px;
+                        text-decoration: none;
+                    }
+                    a:hover {
+                        color: $color;
+                    }
+                }
+            }
+        }
+    }
+    .mySony {
+        height: 61px;
+        background-color: #fff;
+        .logo_box {
+            width: 1210px;
+            margin: 0 auto;
+            a img {
+                height: 61px;
+                vertical-align: middle;
+                border-style: none;
+            }
+            .headernav {
+                float: left;
+                line-height: 61px;
+                ul li {
+                    float: left;
+                    list-style: none;
+                    text-align: center;
+                    width: 100px;
+                    font-size: 15px;
+                    a {
+                        color: #333;
+                        font-size: 16px;
+                    }
+                    a:hover {
+                        color: $color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.main div:nth-child(1) {
+    position: relative;
+    .login {
+        width: 370px;
+        height: 360px;
+        background: #17A3F3;
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        margin-right: -400px;
+        margin-top: -180px;
+        border-radius: 20px;
+        .message {
+            color: #fff;
+            font-size: 12px;
+            line-height: 20px;
+            height: 20px;
+            span {
+                color: red;
+                font-size: 12px;
+                line-height: 20px;
+            }
+        }
+        h3 {
+            color: #333;
+            font-size: 28px;
+            font-weight: normal;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        input {
+            width: 310px;
+            height: 45px;
+            border: 0;
+            outline: none;
+            border-radius: 10px;
+            padding-left: 20px;
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        button {
+            width: 310px;
+            height: 39px;
+            line-height: 39px;
+            color: #fff;
+            font-size: 18px;
+            border: 0;
+            background: $color;
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background: skyblue;
+            color: #333;
+            outline: none;
+        }
+        ul {
+            width: 166px;
+            margin: 0 auto;
+            li {
+                float: left;
+                margin: 0 20px;
+                a {
+                    color: #fff;
+                }
+                a:hover {
+                    color: #333;
+                }
+            }
+        }
+    }
+    .register {
+        display: none;
+        width: 370px;
+        height: 360px;
+        background: #17A3F3;
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        margin-right: -400px;
+        margin-top: -180px;
+        border-radius: 20px;
+        text-align: center;
+        h3 {
+            color: #333;
+            font-size: 28px;
+            height: 65px;
+            line-height: 65px;
+            font-weight: normal;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        input {
+            width: 310px;
+            height: 45px;
+            border: 0;
+            outline: none;
+            border-radius: 10px;
+            padding-left: 20px;
+            color: #333;
+            font-size: 18px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+        button {
+            width: 310px;
+            height: 39px;
+            line-height: 39px;
+            color: #fff;
+            font-size: 18px;
+            border: 0;
+            background: $color;
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background: skyblue;
+            color: #333;
+            outline: none;
+        }
+        a {
+            color: #fff;
+            font-size: 14px;
+        }
+        a:hover {
+            color: #333;
+        }
+    }
+}

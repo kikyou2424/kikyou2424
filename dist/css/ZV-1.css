@@ -1,0 +1,563 @@
+/* 头部导航栏 start  */
+
+.header {
+    width: 100%;
+    background: #000;
+}
+
+.head {
+    height: 65px;
+    background: #000;
+    position: relative;
+}
+
+
+/* 头部导航栏  end  */
+
+
+/* logo start */
+
+.logo {
+    float: left;
+    margin-left: 25px;
+}
+
+.logo>a {
+    display: block;
+    width: 110px;
+    height: 65px;
+    text-indent: -9999px;
+    background: url(https://www.sonystyle.com.cn/etc/designs/sonystyle/images/sony-logo.jpg) no-repeat center;
+}
+
+
+/* logo end */
+
+
+/* 导航栏 start */
+
+.nav {
+    float: left;
+    margin-left: 40px;
+    height: 65px;
+}
+
+.nav>ul>li {
+    float: left;
+    width: 112px;
+    height: 65px;
+    line-height: 65px;
+    position: relative;
+}
+
+.nav>ul>li>a {
+    display: block;
+    font-size: 14px;
+    color: #fff;
+    font-weight: bold;
+    line-height: 65px;
+    cursor: pointer;
+    background: url(https://www.sonystyle.com.cn/etc/designs/sonystyle/images/dot_down_black.jpg) no-repeat 95px center;
+    text-indent: -7px;
+    text-align: center;
+}
+
+.nav>ul>li:nth-child(1),
+.nav>ul>li:nth-child(2) {
+    background: url(https://www.sonystyle.com.cn/etc/designs/sonystyle/images/nav_line.jpg) no-repeat right center;
+}
+
+.nav>ul>li:nth-child(3) a {
+    text-indent: -12px;
+}
+
+.nav>ul>li:hover>a {
+    color: #1e8ddc;
+    background: #fff url(https://www.sonystyle.com.cn/etc/designs/sonystyle/images/dot_down_blue.jpg) no-repeat 95px center;
+}
+
+.nav>ul>li:hover ol {
+    display: block;
+}
+
+
+/* 标签下拉显示菜单 */
+
+.nav>ul>li>ol {
+    position: absolute;
+    top: 65px;
+    width: 100%;
+    background: #fff;
+    display: none;
+    padding: 10px 0;
+    z-index: 2;
+}
+
+.nav>ul>li>ol>li {
+    height: 30px;
+    width: 100%;
+    position: relative;
+}
+
+.nav>ul>li>ol>li a {
+    width: 100%;
+    font-size: 12px;
+    line-height: 30px;
+    text-align: center;
+    display: block;
+    color: #646464;
+    background-color: #fff;
+}
+
+.nav>ul>li>ol>li>a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 21px;
+    width: 70px;
+    height: 0;
+    border-bottom: 1px solid #eee;
+}
+
+.nav>ul>li>ol>li a:hover {
+    color: #1e8ddc;
+}
+
+
+/* nav 网页导航 */
+
+#moreNav {
+    width: 968px;
+    height: 458px;
+    position: absolute;
+    top: 65px;
+    left: -224px;
+    background: #fff;
+    display: none;
+    z-index: 2;
+}
+
+.nav>ul>li:nth-child(3):hover #moreNav {
+    display: block;
+}
+
+#moreNav ol {
+    float: left;
+    width: 108px;
+}
+
+#moreNav>dl {
+    border-right: 1px dotted #e8e8e8;
+    height: 358px;
+    margin: 0;
+    padding-left: 6px;
+    width: 126px;
+    display: inline-table;
+}
+
+#moreNav dl:nth-child(7) {
+    border-right: 0px;
+}
+
+#moreNav>dl :nth-child(n) {
+    width: 117px;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 1px 0 8px;
+    color: #000;
+    font-size: 12px;
+}
+
+#moreNav>dl a:nth-child(n) {
+    padding: 0px;
+}
+
+#moreNav>dl a:nth-child(n):hover {
+    color: #1e8ddc;
+    font-weight: 700;
+}
+
+.nav #moreNav>dl>dt {
+    margin: 5px 0;
+    font-weight: 700;
+}
+
+#moreNav>div {
+    border-top: 1px solid #bbbbbb;
+    bottom: 0;
+    margin: 0 15px;
+    position: absolute;
+    width: 930px;
+}
+
+
+/* 导航栏 end */
+
+
+/* 导航栏 search 搜索框 start */
+
+.nav>ul .search {
+    width: 240px;
+    height: 65px;
+    position: relative;
+}
+
+.search input {
+    border: 0 none;
+    color: #787878;
+    font-family: "Microsoft YaHei";
+    height: 25px;
+    line-height: 25px;
+    margin-left: 16px;
+    padding-right: 35px;
+    text-indent: 1em;
+    width: 194px;
+    outline: none;
+    border-radius: 25px;
+    font-size: 12px
+}
+
+.search button {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    top: 23px;
+    right: 0px;
+    width: 20px;
+    height: 18px;
+    border: 0 none;
+    outline: none;
+    background: url(https://www.sonystyle.com.cn/etc/designs/sonystyle/images/btn_search_03.jpg) no-repeat right center;
+}
+
+
+/* 导航栏 search 搜索框 end */
+
+
+/* 登录/注册 start */
+
+.login {
+    float: right;
+    width: 90px;
+    margin-right: 128px;
+    height: 65px;
+    line-height: 65px;
+    font-size: 14px;
+    color: #1fa8e2;
+    text-align: center;
+}
+
+.login a {
+    font-size: 14px;
+    color: #1fa8e2;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* 登录/注册 end */
+
+
+/* 购物车 start */
+
+.minicart {
+    width: 100px;
+    height: 65px;
+    position: absolute;
+    right: 2px;
+    top: 0;
+}
+
+.minicart>div {
+    width: 48px;
+    height: 65px;
+    float: left;
+    cursor: pointer;
+    position: relative;
+}
+
+.minicart>div:nth-child(1) {
+    background: url(https://www.sonystyle.com.cn/etc/designs/sonystyle/images/icon_shopping_1.png) no-repeat center 17px;
+}
+
+.minicart>div:nth-child(2) {
+    float: right;
+    background: url(https://www.sonystyle.com.cn/etc/designs/sonystyle/images/guan_bai.png) no-repeat center;
+}
+
+.minicart>div:nth-child(2) a {
+    display: block;
+    width: 48px;
+    height: 65px;
+}
+
+#cart {
+    display: none;
+    width: 500px;
+    height: 65px;
+    position: absolute;
+    top: 65px;
+    right: 0px;
+    border: 1px solid #ccc;
+    background: #f5f5f5;
+    z-index: 2;
+}
+
+.gotobasket a {
+    height: 36px;
+    width: 104px;
+    display: block;
+    float: right;
+    margin-top: 15px;
+    margin-right: 20px;
+    background: #0d9cd4;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 36px;
+    text-align: center;
+}
+
+.summary {
+    width: 356px;
+    height: 52px;
+    background-color: #f5f5f5;
+    padding-left: 5px;
+    float: left;
+    padding-top: 10px;
+}
+
+.summary p {
+    line-height: 46px;
+    font-size: 16px;
+    display: block;
+    float: left;
+    padding-left: 15px;
+}
+
+.summary p span {
+    color: #0d9cd4;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+
+/* 购物车划过时效果 */
+
+.minicart>div:nth-child(1):hover {
+    background: #fff url(https://www.sonystyle.com.cn/etc/designs/sonystyle/images/icon_shopping_1_hover.png) no-repeat center 17px;
+}
+
+.minicart>div:nth-child(1):hover #cart {
+    display: block;
+}
+
+.minicart>div:nth-child(2):hover {
+    background: url(https://www.sonystyle.com.cn/etc/designs/sonystyle/images/guan_lan.png) no-repeat center
+}
+
+
+/* 购物车 end */
+
+
+/* route 路径 start */
+
+#bread_banner {
+    margin: 15px auto;
+}
+
+.bread_banner {
+    height: 33px;
+}
+
+.bread_banner .left {
+    font-size: 14px;
+    color: #707070;
+    line-height: 33px;
+}
+
+.bread_banner .left a {
+    font-size: 14px;
+    color: #707070;
+    line-height: 33px;
+}
+
+
+/* route 路径 end */
+
+
+/* products 全系产品列表 start */
+
+#products {
+    min-height: 50px;
+    background: #f6f6f6 url(https://www.sonystyle.com.cn/etc/designs/sonystyle/images/product_nav_bg.gif) no-repeat center bottom;
+}
+
+.products {
+    margin-bottom: 30px;
+}
+
+.products-m {
+    height: 30px;
+    padding: 10px 0;
+}
+
+.products-m del {
+    display: block;
+    height: 10px;
+    text-align: center;
+    line-height: 10px;
+    background-image: url(https://www.sonystyle.com.cn/etc/designs/sonystyle/images/trigger_v_slide.gif);
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
+.products-m>div {
+    text-align: center;
+    line-height: 14px;
+    color: #a5a5a5;
+    margin-top: 6px;
+}
+
+
+/* products 全系产品列表 end */
+
+
+/* pro-list 本产品列表 start */
+
+.pro-list {
+    height: 695px;
+    padding-bottom: 30px;
+}
+
+.pro-list1 {
+    width: 537px;
+    height: 665px;
+    float: left;
+}
+
+.pro-list1>div:nth-child(1) {
+    height: 537px;
+    width: 537px;
+    border: 1px #dddddd solid;
+    position: relative;
+    background: url(https://www.sonystyle.com.cn/content/dam/sonystyle/products/cyber-shot/zv_1/product/img_zv_1_x_20210104_2.jpg)no-repeat;
+    background-size: cover;
+}
+
+.pro-list1 ul {
+    margin-left: 28px;
+    height: 66px;
+    padding: 25px 0 15px 0;
+}
+
+.pro-list1 ul li {
+    display: list-item;
+    float: left;
+    position: relative;
+    width: 66px;
+    height: 66px;
+    margin: 0 8px;
+    border: 1px #dddddd solid;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.pro-list1 ul li:hover {
+    border: 1px #2690db solid;
+}
+
+.pro-list1 ul li img {
+    width: 100%;
+}
+
+.pro-list2 {
+    width: 653px;
+    height: 650px;
+    float: right;
+}
+
+
+/*  */
+
+.pro-list2>div:nth-child(1) {
+    position: relative;
+}
+
+.num_m {
+    width: 106px;
+    height: 32px;
+    border: 1px solid #cecece;
+    background: #ffffff;
+    position: absolute;
+    bottom: 57px;
+    left: 89px;
+}
+
+.reduce {
+    display: block;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    line-height: 100%;
+    cursor: pointer;
+    text-indent: -9999px;
+    background: url(https://www.sonystyle.com.cn/etc/designs/sonystyle/images/reduce.gif) center center no-repeat #f1f4f9;
+    float: left;
+}
+
+.reduce:hover {
+    background: url(https://www.sonystyle.com.cn/etc/designs/sonystyle/images/reduce.gif) center center no-repeat #17A3F3;
+}
+
+.add:hover {
+    background: url(https://www.sonystyle.com.cn/etc/designs/sonystyle/images/add.gif) center center no-repeat #17A3F3;
+}
+
+.add {
+    display: block;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    line-height: 100%;
+    text-align: center;
+    text-indent: -9999px;
+    background: url(https://www.sonystyle.com.cn/etc/designs/sonystyle/images/add.gif) center center no-repeat #f1f4f9;
+    float: left;
+}
+
+.num_p {
+    width: 40px;
+    height: 100%;
+    float: left;
+    display: block;
+    border-left: 1px solid #cecece;
+    border-right: 1px solid #cecece;
+    color: #fff;
+}
+
+.num_p input {
+    background: none;
+    appearance: normal;
+    border: 0 none;
+    padding: 7px 0px 0px;
+    width: 100%;
+    text-align: center;
+    color: #706f6f;
+    font-size: 14px;
+}
+
+.addCart {
+    margin: 10px auto;
+    width: 512px;
+    height: 52px;
+}
+
+.addCart>div {
+    float: left;
+    margin-right: 12px;
+}
+
+
+/* pro-list 本产品列表 end */
