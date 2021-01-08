@@ -29,7 +29,7 @@
         <div class="head inner">
             <!-- logo -->
             <div class="logo">
-                <a href="./index.html">索尼中国</a>
+                <a href="./index.php">索尼中国</a>
             </div>
             <!-- nav -->
             <div class="nav">
@@ -160,9 +160,10 @@
             <div class="login">
                 <?php if(empty($user)):?>
                 <a href="login.php">登入</a> &nbsp;/&nbsp;
-                <a href="javascript:">注册</a>
+                <a href="./login.php?falg=false">注册</a>
                 <?php else:?>
                     <a href="#"><?php echo $user['username']?></a>
+                    &nbsp; <a href='./interface/exit.php?exit=true'>退出</a>
                 <?php endif?>
             </div>
             <!-- 购物车 start -->
@@ -220,8 +221,87 @@
     <!--pro-list 本产品列表 start -->
     <div id="pro-list" class="min-w1210">
         <div class="pro-list inner">
-            <div class="pro-list1">
-                <div style="background: url(https://assets.sonystyle.com.cn/content/dam/sonystyle/products/xperia/xperia1m2/product/xperia1m2_eisa_g_201222.jpg) no-repeat center;background-size: cover;"></div>
+            <div class="pro-list1" id="pro-list1">
+                <div id="smallbox" style="background: url(https://assets.sonystyle.com.cn/content/dam/sonystyle/products/xperia/xperia1m2/product/xperia1m2_eisa_g_201222.jpg) no-repeat center;background-size: cover;">                  
+                    <div id="mask"></div>
+                </div>
+                <div id="bigbox" >
+                    <img id="bigImg" src="https://assets.sonystyle.com.cn/content/dam/sonystyle/products/xperia/xperia1m2/product/xperia1m2_eisa_g_201222.jpg" alt="">
+                </div>   
+    <script>
+        function $id(id){
+            return document.getElementById(id);
+        }
+        function getScroll(){
+            if(window.pageYOffset){
+                return {
+                    top:window.pageYOffset,
+                    left:window.pageXOffset
+                }
+            }else if(document.documentElement.scrollTop){
+                return {
+                    top:document.documentElement.scrollTop,
+                    left:document.documentElement.scrollLeft
+                }
+            }else{
+                return {
+                    top:document.body.scrollTop,
+                    left:document.body.scrollLeft
+                }
+            }
+        }
+                    // 获取相关元素
+         var box = $id('pro-list1');//总容器
+		var smallBox = $id('smallbox');//小盒子
+		var bigBox = $id('bigbox');//大盒子
+		var mask = $id('mask');//遮罩层
+		var bigImg = $id('bigImg');//大图片
+		// 1 鼠标移入small,big显示,mask显示
+		smallBox.onmouseenter = function(){
+			bigBox.style.display = "block";
+			mask.style.display = "block";
+		}
+		// 2 mask跟着鼠标移动，鼠标在mask中心位置
+		smallBox.onmousemove = function(e){
+			e = e||window.event;
+			// 求出鼠标距离small的距离
+			var left = e.clientX+getScroll().left - box.offsetLeft;
+			var top = e.clientY+getScroll().top-box.offsetTop;
+			// 鼠标在mask中心，减去mask宽高的一半
+			left = left-mask.offsetWidth/2
+			top = top-mask.offsetHeight/2
+			// 边界监测
+			if(left<0){
+				left=0
+			}
+			if(left>smallBox.offsetWidth-mask.offsetWidth){
+				left=smallBox.offsetWidth-mask.offsetWidth
+			}
+			if(top<0){
+				top = 0;
+			}
+			if(top>smallBox.offsetHeight-mask.offsetHeight){
+				top = smallBox.offsetHeight-mask.offsetHeight
+			}
+			// 定位mask
+			mask.style.left = left +"px";
+			mask.style.top = top +"px";
+			// 3 mask对应的大图位置显示
+			// left/350 = 大图左移的距离/800
+			// top/350 = 大图上移的距离/800
+			var x = left/smallBox.offsetWidth*bigImg.offsetWidth;
+			var y = top/smallBox.offsetHeight*bigImg.offsetHeight;
+			
+			bigImg.style.marginLeft = -x+"px";
+			bigImg.style.marginTop = -y+"px";
+
+		}
+		// 4 鼠标移出small,big隐藏,mask隐藏
+		smallBox.onmouseleave = function(){
+			bigBox.style.display = "none";
+			mask.style.display = "none";
+		}
+    </script>          
                 <ul class="clearfix">
                     <li><img src="https://assets.sonystyle.com.cn/content/dam/sonystyle/products/xperia/xperia1m2/product/xperia1m2_eisa_g_201222.jpg" alt=""></li>
                     <li><img src="https://assets.sonystyle.com.cn/content/dam/sonystyle/products/xperia/xperia1m2/product/xperia1m2_feature_3.jpg.thumb.537.537.png.thumb.64.64.png" alt=""></li>
@@ -236,6 +316,11 @@
             </div>
             <div class="pro-list2">
                 <div>
+                <div class="time">
+                    <span>限时抢购</span>
+                    <p>活动倒计时 ：0天 0 小时 0分 0秒</p>
+               </div>
+               <script src="./js/seckill.js"></script>
                     <img src="./images/pro5.png" alt="">
                     <div class="num_m">
                         <div class="reduce">-</div>
@@ -251,6 +336,41 @@
                     <div><img src="https://www.sonystyle.com.cn/etc/designs/sonystyle/images/addwish.png" alt="加入心愿单"></div>
                 </div>
             </div>
+            
+    <script>
+        // 点击加入购物车
+        var i=1
+        $('.add').click(function(){
+            i++
+            $('#product_count').val(i);
+        })
+        $('.reduce').click(function(){
+            if(i>0){
+                i--;
+            };
+            $('#product_count').val(i);
+        })
+        $('.addCart').click(function(){
+            $.ajax({
+                url:"./interface/add.php",
+                data:{
+                    id:2,
+                    name:'索尼 Xperia 1 II 5G 手机 青山绿 鬼灭之刃(绿)限定套装',
+                    img:'https://www.sonystyle.com.cn/content/dam/sonystyle/products/xperia/xperia1m2/product/img_xp_1m2_g_2.jpg',
+                    price:7499,
+                    num:$('#product_count').val()
+                },
+                dataType:"json",
+                success:function(res){
+                    if(res.code===1){
+                        alert('商品添加成功')
+                    }
+                }       
+            })
+        })
+        </script>
+        </div>
+   
         </div>
     </div>
     <!-- pro-list 本产品列表 end -->

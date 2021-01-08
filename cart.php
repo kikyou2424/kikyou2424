@@ -24,7 +24,7 @@ if(empty($_SESSION['user_data'])){
         <div class="head inner">
             <!-- logo -->
             <div class="logo">
-                <a href="./index.html">索尼中国</a>
+                <a href="./index.php">索尼中国</a>
             </div>
             <!-- nav -->
             <div class="nav">
@@ -155,9 +155,10 @@ if(empty($_SESSION['user_data'])){
             <div class="login">
                 <?php if(empty($user)):?>
                 <a href="javascript:">登入</a> &nbsp;/&nbsp;
-                <a href="javascript:">注册</a>
+                <a href="./login.php?falg=false">注册</a>
                 <?php else:?>
                     <a href="#"><?php echo $user['username']?></a>
+                    &nbsp; <a href='./interface/exit.php?exit=true'>退出</a>
                 <?php endif?>
             </div>
             <!-- 购物车 start -->
@@ -210,33 +211,13 @@ if(empty($_SESSION['user_data'])){
         <div class="shop_no">
             <div class="no_img"><img src="https://www.sonystyle.com.cn/etc/designs/sonystyle/images/no.png"></div>
             <div class="no_tips">您的购物车无商品，快去看看心仪的商品吧</div>
-            <div class="no_intro"><a href="./index.html" target="_blank">去逛逛</a></div>
+            <div class="no_intro"><a href="./index.php" target="_blank">去逛逛</a></div>
         </div>
         <!-- 购物车无商品时主体 start-->
 
         <!-- 购物车商品 start-->
         <div class="shop_con inner">
             <div class="shop_item">
-                <div>
-                    <div class="cart_name">
-                        <img src="https://www.sonystyle.com.cn/content/dam/sonystyle/products/xperia/xperia1m2/product/img_xp_1m2_g_2.jpg" alt="">
-                        <span>索尼 Xperia 1 II 5G 手机 青山绿 鬼灭之刃(绿)限定套装</span>
-                    </div>
-                    <div class="c_price">RMB 7,499.00</div>
-                    <div class="num_m">
-                        <div class="reduce">-</div>
-                        <span class="num_p">
-                            <label for="product_count"></label> 
-                            <input type="text" id="product_count" value="1">
-                        </span>
-                        <div class="add">+</div>
-                    </div>
-                    <div class="cart_total">RMB 7,499.00</div>
-                    <div class="cart_opera">
-                        <a href="javascript:void(0)" class="topool">移入心愿单</a>
-                        <a href="javascript:void(0)" class="cp_del">删除</a>
-                    </div>
-                </div>
             </div>
         </div>
         <!-- 购物车商品 start-->
@@ -246,15 +227,142 @@ if(empty($_SESSION['user_data'])){
         <div class="spt">
             <div class="spt_c"></div>
             <div class="spt_con">
-                <a href="javascript:void(0)" class="tobug">去结算(<span>2</span>)</a>
+                <a href="javascript:void(0)" class="tobug">去结算 <!-- (<span>2</span>)--></a>
                 <div class="spt_p_con">
-                    <div class="spt_p_t">总价：RMB 12,798.00</div>
+                    <!-- <div class="spt_p_t">总价：RMB 12,798.00</div> -->
                 </div>
             </div>
         </div>
     </div>
     <!-- 购物车结算栏 end -->
+    <script>
+        // 1 购物车页面一打开就要展示该用户的购物车商品列表
+        showList()
+        function showList(){
+            $.ajax({
+                url:"./interface/showlist.php",
+                dataType:"json",
+                success:function(res){
+                    if(res.code===1){
+                        $('.shop_con').empty();
+                        var list = res.data;
+                        if(list.length<1){
+                            $('.shop_no').show();
+                            $('.shop_con').hide();
+                            return;
+                        }
+                        $('.shop_no').hide();
+                        $('.shop_con').show();
+                        $.each(list,function(index,product){
+                           var total = product.product_price*product.product_num;
+                            $('.shop_con').append(`
+                                    <div class="shop_item">
+                                        <div>
+                                            <div class="cart_name" data-id="${product.product_id}">
+                                                <img src="${product.product_img}" alt="">
+                                                <span>${product.product_name}</span>
+                                            </div>
+                                            <div class="c_price">RMB ${product.product_price}.00</div>
+                                            <div class="num_m">
+                                                <div class="reduce">-</div>
+                                                <span class="num_p">
+                                                    <label for="product_count"></label> 
+                                                    <input type="text" class="product_count" value="${product.product_num}">
+                                                </span>
+                                                <div class="add">+</div>
+                                            </div>
+                                            <div class="cart_total">RMB ${total}.00</div>
+                                            <div class="cart_opera">
+                                                <a href="javascript:void(0)" class="topool">移入心愿单</a>
+                                                <a href="javascript:void(0)" class="cp_del">删除</a>
+                                            </div>
+                                        </div>
+                                    </div> `)
+                         })
 
+ // 2 用户点击+或者-可以修改当前商品的数量
+        $('.shop_item').on('click','.add',function(){
+            // 用户点击+
+            var that = $(this);
+            var product_count= that.parent().children().eq(1).children('.product_count');
+            $.ajax({
+                url:"./interface/update.php",
+                data:{
+                    type:'add',
+                    id:that.parent().parent().children().eq(0).data('id')
+                },
+                dataType:"json",
+                success:function(res){
+                    if(res.code==1){
+                        product_count.val(product_count.val()-1+2);
+                    }
+                }
+            });
+        })
+        $('.shop_item').on('click','.reduce',function(){
+            // 用户点击-
+            var that = $(this);
+            var product_count= that.parent().children().eq(1).children('.product_count');
+            console.log($('.cart_name').data('id'))
+            $.ajax({
+                url:"./interface/update.php",
+                data:{
+                    type:'cut',
+                    id:that.parent().parent().children().eq(0).data('id')
+                },
+                dataType:"json",
+                success:function(res){
+                    if(res.code==1){    
+                        product_count.val(product_count.val()-1);
+                        if(product_count.val()==0){
+                    $.ajax({
+                        url:"./interface/del.php",
+                        data:{
+                        id:that.parent().parent().children().eq(0).data('id')
+                         },
+                        dataType:"json",
+                        success:function(res){
+                        if(res.code===1){
+                            showList();
+                            }
+                }
+            })
+                        }
+                    }
+                }
+            })
+        })
+
+
+          // 3 用户点击删除可以删除当前商品,删除完成后要重新渲染
+          $('.shop_item').on('click','.cp_del',function(){
+            var that = $(this);
+            $.ajax({
+                url:"./interface/del.php",
+                data:{
+                    id:that.parent().parent().children().eq(0).data('id')
+                },
+                dataType:"json",
+                success:function(res){
+                    if(res.code===1){
+                        showList();
+                    }
+                }
+            })
+        })
+        
+                    }else{
+                        $('.shop_no').show();
+                        $('.shop_con').hide();
+                    }
+                }
+            })
+        }
+
+        
+      
+      
+    </script>
     </div>
     <!-- main end -->
     <div style="background:url(./images/cart2.png) no-repeat center top;min-width: 1210px;height: 564px;"></div>

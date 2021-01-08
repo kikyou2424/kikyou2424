@@ -3,6 +3,7 @@ session_start();
 if(isset($_SESSION['user_data'])){
     $user=$_SESSION['user_data'];
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,8 +20,8 @@ if(isset($_SESSION['user_data'])){
 
 <body>
     <!-- 跳楼机 start -->
-    <div id="RightFixNav" class="" style="margin-top: -76px; right: 281.5px; display: none;">
-        <div class="qipao" style="display: none;">
+    <div id="RightFixNav">
+        <div class="qipao">
             <div class="qipao_item">
                 <img alt="商城App" src="https://www.sonystyle.com.cn/etc/designs/sonystyle/images/gongzhonghao.png">
                 <p>索尼中国APP</p>
@@ -37,7 +38,9 @@ if(isset($_SESSION['user_data'])){
                 <span>微信扫一扫</span>
             </div>
         </div>
-        <a href="javascript:void(0)" class="mobileIcon"><span>手机<br>端</span></a>
+        <a href="javascript:void(0)" class="mobileIcon">
+            <img src="https://www.sonystyle.com.cn/etc/designs/sonystyle/images/QRcode.jpg" alt="">
+        </a>
         <ul>
             <li>
                 <a class="MainB0" href="javascript:;">
@@ -51,12 +54,12 @@ if(isset($_SESSION['user_data'])){
             </li>
             <li>
                 <a class="MainB2" href="javascript:;">
-                    <img class="NavPic" src="https://www.sonystyle.com.cn/content/dam/sonystyle/common/othericon/RightFixNav_icon2.jpg">
+                <img class="NavPic" src="https://www.sonystyle.com.cn/content/dam/sonystyle/common/othericon/RightFixNav_icon3.jpg">
                 </a>
             </li>
             <li>
-                <a class="MainB3" href="javascript:;">
-                    <img class="NavPic" src="https://www.sonystyle.com.cn/content/dam/sonystyle/common/othericon/RightFixNav_icon3.jpg">
+                <a class="MainB3" href="javascript:;">              
+                    <img class="NavPic" src="https://www.sonystyle.com.cn/content/dam/sonystyle/common/othericon/RightFixNav_icon2.jpg">
                 </a>
             </li>
             <li>
@@ -64,25 +67,70 @@ if(isset($_SESSION['user_data'])){
                     <img class="NavPic" src="https://www.sonystyle.com.cn/content/dam/sonystyle/common/othericon/znyj_50x50.jpg">
                 </a>
             </li>
+            <li class="MainB5">
+                <div class="navword1">
+                    <p>会员</p> <p>专区</p>
+                </div>
+            </li>
             <li>
-                <a class="MainBMySony" href="javascript:;">
-                    <img class="NavPic" src="https://www.sonystyle.com.cn/etc/designs/sonystyle/images/RightFixNav_icon6_hover.png">
-                    <div class="Rtitle">
-                        <div class="navword">会员<br>专区</div>
-                    </div>
+                <a class="MainB6" href="javascript:;">
+                    <img class="NavPic" src="https://www.sonystyle.com.cn/etc/designs/sonystyle/images/RightFixNav_icon6.png">
                 </a>
             </li>
+            
         </ul>
         <a href="javascript:void(0)" class="homeback"></a>
     </div>
+    <script>
+        $(window).scroll(
+                function () {
+                    if ($(window).scrollTop() >1620) {
+                    $('#RightFixNav').css('display', 'block')
+                    };
+                    if ($(window).scrollTop() < 1620) {
+                    $('#RightFixNav').css({ display: 'none' })
+                    }
+                }       
+        );  
+            $('.mobileIcon').on('mouseover',function(){
+                $('.qipao').css('display','block')
+            })
+            $('.mobileIcon').on('mouseout',function(){
+                $('.qipao').css('display','none')
+            })
+            $('.toptop').on('click',function(){
+            $('html').animate({scrollTop:0})
+            })
+            $('.MainB0').on('click',function(){
+            $('html').animate({scrollTop:1620})
+            })
+            $('.MainB1').on('click',function(){
+            $('html').animate({scrollTop:2110})
+            })
+            $('.MainB2').on('click',function(){
+            $('html').animate({scrollTop:3700})
+            })
+            $('.MainB3').on('click',function(){
+            $('html').animate({scrollTop:4905})
+            })
+            $('.MainB4').on('click',function(){
+            $('html').animate({scrollTop:6420})
+            })
+            $('.MainB5').on('click',function(){
+            $('html').animate({scrollTop:7260})
+            })
+            $('.MainB6').on('click',function(){
+            $('html').animate({scrollTop:0})
+            })
+    </script>
     <!-- 跳楼机 end -->
 
-    <!-- head头部导航栏开始 -->
+    <!-- head头部导航栏开始 -->  
     <div class="header">
         <div class="head inner">
             <!-- logo -->
             <div class="logo">
-                <a href="./index.html" target="_blank">索尼中国</a>
+                <a href="./index.php" target="_blank">索尼中国</a>
             </div>
             <!-- nav -->
             <div class="nav">
@@ -213,9 +261,10 @@ if(isset($_SESSION['user_data'])){
             <div class="login">
                 <?php if(empty($user)):?>
                 <a href="./login.php">登录</a> &nbsp;/&nbsp;
-                <a href="javascript:">注册</a>
+                <a href="./login.php?falg=false">注册</a>
                 <?php else:?>
                  <a href="#"><?php echo $user['username']?></a>
+                 &nbsp; <a href='./interface/exit.php?exit=true'>退出</a>
                 <?php endif?>
             </div>
             <!-- 购物车 start -->
@@ -820,16 +869,16 @@ if(isset($_SESSION['user_data'])){
     <div class="slideshow">
         <ul class="clearfix" id="showimgbox">
             <li>
-                <a href="./ZV-1.php?id=1" target="_blank"></a>
+                <a href="./ZV-1.php" target="_blank"></a>
             </li>
             <li>
-                <a href="./Xperia 1 II.php?id=2" target="_blank"></a>
+                <a href="./Xperia 1 II.php" target="_blank"></a>
             </li>
             <li>
-                <a href="./DSC-RX100M7.php?id=3" target="_blank"></a>
+                <a href="./DSC-RX100M7.php" target="_blank"></a>
             </li>
             <li>
-                <a href="./ZV-1.php?id=1" target="_blank"></a>
+                <a href="./ZV-1.php" target="_blank"></a>
             </li>
         </ul>
         <!-- 轮播图按钮 start -->

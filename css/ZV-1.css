@@ -238,7 +238,7 @@
 
 .login {
     float: right;
-    width: 90px;
+    width: 150px;
     margin-right: 128px;
     height: 65px;
     line-height: 65px;
@@ -435,6 +435,7 @@
     width: 537px;
     height: 665px;
     float: left;
+    position: relative;
 }
 
 .pro-list1>div:nth-child(1) {
@@ -479,10 +480,61 @@
 }
 
 
+/* 放大镜 */
+
+#smallbox {
+    position: relative;
+}
+
+#mask {
+    position: absolute;
+    width: 269.5px;
+    height: 269.5px;
+    cursor: move;
+    display: none;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+#bigbox {
+    width: 539px;
+    height: 539px;
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 539px;
+    overflow: hidden;
+    z-index: 99;
+}
+
+#bigImg {
+    width: 1078px;
+    height: 1078px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+
 /*  */
 
 .pro-list2>div:nth-child(1) {
     position: relative;
+}
+
+.time {
+    color: red;
+    font-size: 25px;
+    line-height: 36px;
+}
+
+.time span {
+    float: left;
+}
+
+.time p {
+    float: left;
+    margin-left: 20px;
+    font-size: 25px;
 }
 
 .num_m {
